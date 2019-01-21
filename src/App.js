@@ -13,7 +13,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      categories,   
+      categories
     };
     this.handleAddTodo = this.handleAddTodo.bind(this);
   }
@@ -48,10 +48,17 @@ class App extends Component {
                 {categories.code}
               </span>
             </div>
-            <div className="card-body">
-            <ul>{
+            <div className="card-body " >
+            <ul className=" row list-group">{
               categories.task.map((task) => {
-               return <li>{task.name}</li> 
+              
+               return <li className="list-group-item" key={task.id}>
+               <p className="card-tex">{task.name}
+               <span className="fas fa-check "></span>
+               <span className="fas fa-trash-alt "></span>
+               </p>
+               
+               </li> 
               })
             }
             </ul>
@@ -85,9 +92,7 @@ class App extends Component {
       <div className="container">
       <div className="row mt-4">
         <div className="col-md-4 text-center pt-4 ">
-
           <Forms onAddTodo={this.handleAddTodo}></Forms>
-
           <TasksForm className="mt-4" ></TasksForm>
         </div>
         <div className="col-md-8">
